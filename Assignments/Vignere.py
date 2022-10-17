@@ -9,7 +9,7 @@ class Vigenere:
     def __init__(self, key):
         self.key_list=[]    # an empty list to store key list
         self.key = key
-        # convert each character of key to number
+        # convert each character of key to a number
         for ch in key:
             self.key_list.append(ord(ch.upper())-65)
     
@@ -19,6 +19,8 @@ class Vigenere:
         i = 0   # initialize an index of plaintext to 0
         while i < len(plaintext):
             for ch in plaintext:    # each character of plaintext
+                # append ciphertext by index 
+                # index = the remainder of dividing (index of character + the periodic loop index of the element of the key) by 26 
                 if ch.isupper():    
                     ciphertext += self.letter_list[(ord(ch) - 65 + self.key_list[i % len(self.key_list)]) % 26]        
                     i += 1
@@ -27,12 +29,14 @@ class Vigenere:
                     i += 1
         return ciphertext
         
-        
+    # create Decrypt function
     def decrypt(self, ciphertext):
         plaintext = ""  # an empty string to store decrypt result
         i = 0   # initialize an index of ciphertext to 0
         while i < len(ciphertext):
             for ch in ciphertext:   # each character of ciphertext
+                # append plaintext by index
+                # index = the remainder of dividing ((index of character - the periodic loop index of the element of the key) - 26) by 26
                 if ch.isupper():
                     plaintext += self.letter_list[(ord(ch) - 65 - self.key_list[i % len(self.key_list)] + 26) % 26]
                     i += 1

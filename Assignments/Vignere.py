@@ -1,20 +1,25 @@
 class Vigenere:
     """
     Develop the class to encrypt and decrypt using the cipher developed by Vigenere.
+    The 
     """
     # define a Alphabet list
     letter_list = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     
-    # create key list
     def __init__(self, key):
+        """
+        This function returns a digital key list.
+        """
         self.key_list=[]    # an empty list to store key list
         self.key = key
         # convert each character of key to a number
         for ch in key:
             self.key_list.append(ord(ch.upper())-65)
     
-    # create Encrypt function
     def encrypt(self, plaintext):
+        """
+        This function encrpts the input plaintext.
+        """
         ciphertext = "" # an empty string to store encrypt result
         i = 0   # initialize an index of plaintext to 0
         while i < len(plaintext):
@@ -29,8 +34,10 @@ class Vigenere:
                     i += 1
         return ciphertext
         
-    # create Decrypt function
     def decrypt(self, ciphertext):
+        """
+        This function decrpts the input ciphertext.
+        """
         plaintext = ""  # an empty string to store decrypt result
         i = 0   # initialize an index of ciphertext to 0
         while i < len(ciphertext):
@@ -50,6 +57,7 @@ cipher_text = v.encrypt("Algorithm")
 message = v.decrypt("Hzagvphbe")
 assert (message == "Algorithm"), "encrypt, decrypt did not result in same message"
 
+# Diver Code
 if __name__ == '__main__':
     user_input = input("Press E to encrypt, press D to decrypt: ")
     while(user_input!='D' and user_input!='E'):

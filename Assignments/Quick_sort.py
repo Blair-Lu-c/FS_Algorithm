@@ -51,56 +51,60 @@ class QuickSort:
             self.quicksort(arr, left, pi - 1)
             self.quicksort(arr, pi + 1, right)
     
-    # Get and plot running time in different lists and different lengths of list.
-    lengths_of_list = [5, 100, 500, 1000]
-    sorted_list=[]
-    inversly_sorted_list=[]
-    random_list=[]
+# Get and plot running time in different lists and different lengths of list.
+lengths_of_list = [5, 100, 500, 1000]
+sorted_list=[]
+inversly_sorted_list=[]
+random_list=[]
 
-    def quicksort_running_time(arr, scenoario):
-        if scenoario == "random":
-            random.shuffle(arr)
-        elif scenoario == "sorted":
-            pass
-        elif scenoario == "inversly":
-            arr = arr[::-1]    
-        
-        time_begin = time.time()
-        Q = QuickSort()
-        Q.quicksort(arr, 0 ,len(arr)-1)
-        time_end = time.time()
-        total_time = time_end - time_begin
-        return total_time
+def quicksort_running_time(arr, scenoario):
+    if scenoario == "random":
+        random.shuffle(arr)
+    elif scenoario == "sorted":
+        pass
+    elif scenoario == "inversly":
+        arr = arr[::-1]    
+    
+    time_begin = time.time()
+    Q = QuickSort()
+    Q.quicksort(arr, 0 ,len(arr)-1)
+    time_end = time.time()
+    total_time = time_end - time_begin
+    return total_time
 
-    for lengths in lengths_of_list:
-        arr = list(range(1,lengths))
-        time_elapsed = quicksort_running_time(arr = arr, scenoario="random")
-        random_list.append(time_elapsed)
-        
-    print(f"random list running time: {random_list}")
+for lengths in lengths_of_list:
+    arr = list(range(1,lengths))
+    time_elapsed = quicksort_running_time(arr = arr, scenoario="random")
+    random_list.append(time_elapsed)
+    
+print(f"random list running time: {random_list}")
 
-    for lengths in lengths_of_list:
-        arr = list(range(1,lengths))
-        time_elapsed = quicksort_running_time(arr = arr, scenoario="sorted")
-        sorted_list.append(time_elapsed)
-        
-    print(f"sorted list running time: {sorted_list}")
+for lengths in lengths_of_list:
+    arr = list(range(1,lengths))
+    time_elapsed = quicksort_running_time(arr = arr, scenoario="sorted")
+    sorted_list.append(time_elapsed)
+    
+print(f"sorted list running time: {sorted_list}")
 
-    for lengths in lengths_of_list:
-        arr = list(range(1,lengths))
-        time_elapsed = quicksort_running_time(arr = arr, scenoario="inversly")
-        inversly_sorted_list.append(time_elapsed)
-        
-    print(f"inversly sorted list running time: {inversly_sorted_list}")
+for lengths in lengths_of_list:
+    arr = list(range(1,lengths))
+    time_elapsed = quicksort_running_time(arr = arr, scenoario="inversly")
+    inversly_sorted_list.append(time_elapsed)
+    
+print(f"inversly sorted list running time: {inversly_sorted_list}")
 
-    plt.plot(lengths_of_list,random_list, label="Random",marker='o')
-    plt.plot(lengths_of_list, sorted_list, label="Sorted",marker='o')
-    plt.plot(lengths_of_list, inversly_sorted_list, label="Inversly",marker='o')
-    plt.ylabel("running time")
-    plt.xlabel("lengths of list")
-    plt.title('Time Complexity')
-    plt.legend()
-                    
+plt.plot(lengths_of_list,random_list, label="Random",marker='o')
+plt.plot(lengths_of_list, sorted_list, label="Sorted",marker='o')
+plt.plot(lengths_of_list, inversly_sorted_list, label="Inversly",marker='o')
+plt.ylabel("running time")
+plt.xlabel("lengths of list")
+plt.title('Time Complexity')
+plt.legend()
+
+# Worst Case Time Complexity is O(N^2): This will happen when we will when our array will be sorted and we select smallest or largest indexed element as pivot
+# Average Case Time Complexity is O(Nlog(N)): The average case close to best case.
+# Best case Time Complexity is O(Nlog(N)): the best case of quick sort is when we will select pivot as a mean element
+
 # Driven code         
 if __name__ == '__main__':
     user_input = input("Enter elements of a list separated by space to sort: ")
@@ -114,5 +118,3 @@ if __name__ == '__main__':
     time_end = time.time()
     running_time = time_end - time_start
     print(f'Sorted list in ascending order: {list_to_sort}\nRunning time: {running_time}')
-    
-    

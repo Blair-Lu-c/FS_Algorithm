@@ -72,9 +72,13 @@ if __name__ == '__main__':
     
     if user_input == "E":
         plaintext = input("Please input plaintext: ")
-        print(v.encrypt(plaintext))
+        print("You are encrypting the ciphertext")
+        print(f'Input key: {key}\nInput Plaintext: {plaintext}')
+        print(f'Output ciphertext: {v.encrypt(plaintext)}')
         
     if user_input == "D":
         ciphertext = input("Please input ciphertext: ")
-        print(v.decrypt(ciphertext))    
+        print("You are decrypting the ciphertext")
+        print(f'Input key: {key}\nInput Ciphertext: {ciphertext}')
+        print(f'Output plaintext: {v.decrypt(ciphertext)}')    
     

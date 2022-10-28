@@ -1,1 +1,1 @@
-# FS_Algorithm
+# MADS
